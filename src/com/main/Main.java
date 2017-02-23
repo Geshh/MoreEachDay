@@ -11,6 +11,7 @@ public class Main {
 		UserManager.addUser("stunji", "asdsa@abv.bg", "dassa");
 		UserManager.addUser("Geshh", "asdasa@abv.bg", "dassa");
 		UserManager.addUser("boris", "aaaasdsa@abv.bg", "dassa");
+		
 		SocialLinkManager.follow("stunji", "boris");
 		SocialLinkManager.follow("Geshh", "boris");
 		SocialLinkManager.follow("stunji", "Geshh");

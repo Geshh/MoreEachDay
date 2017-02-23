@@ -49,12 +49,9 @@
 							</div>
 							<br>
 							<div class="red-button-box">
-								<button onclick="window.location.href='/MoreEachDay/login.jsp'" class="red-button">Log In</button>
+								<button onclick="window.location.href='/MoreEachDay/Login'" class="red-button">Log In</button>
 							</div>	
 						</form>
-<!-- 						<div class="red-button-box">
-							<button class="red-button" id="show-log">Log In</button>
-						</div>  -->
 					</section>
 				</div>
 			</div>

@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% String errorMessage = (String)session.getAttribute("error"); %>
 <!DOCTYPE html>
 
-<html land="en">
+<html lang="en">
 
 <head>
 
@@ -42,7 +44,7 @@
 						</form>
 						<br>
 						<div class="red-button-box">
-							<button onclick="window.location.href='/MoreEachDay/register.jsp'" class="red-button">Register</button>
+							<button onclick="window.location.href='/MoreEachDay/Register'" class="red-button">Register</button>
 						</div>
 
 					</section>

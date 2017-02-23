@@ -1,0 +1,81 @@
+ /* The side navigation menu */
+ .sidenav {
+    max-width: 100%;
+    height: 100%; /* 100% Full-height */
+    width: 15%; /* 0 width - change this with JavaScript */
+    margin-left: -10px;
+    top: 0;
+    /*float:left;*/
+    position: fixed;
+    background-color: rgba(1,1,1,0.6);
+    padding-top: 60px; /* Place content 60px from the top */
+}
+
+.main-content {
+    width: 800px;
+    margin: 50px auto;
+}
+
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav p {
+   padding: 8px 8px 8px 32px;
+   text-decoration: none;
+   font-size: 25px;
+   color: #818181;
+   display: block;
+   transition: 0.3s
+}
+
+html {
+    height: 100%;
+    width:100%;
+}
+
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /*background-color: lightgrey;*/
+    background-image:url("../images/bg5.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+.main-content h1 {
+    color: #3c3c3c;
+    text-shadow: 0 -2px 3px #111,0 3px 4px #666;
+    font-size: 94px;
+}
+
+.button {
+    position: absolute;
+    bottom: 20%;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 28px;
+    color:#818181;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}

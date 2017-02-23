@@ -5,9 +5,11 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.service.UserManager;
 
@@ -27,11 +29,20 @@ public class Login extends HttpServlet {
 			boolean loginResult = UserManager.canLogin(username, encryptedPassword);
 			RequestDispatcher view = null;
 			if (loginResult) {
-				view = request.getRequestDispatcher("main.jsp");
+				HttpSession session = request.getSession();
+				session.setAttribute("username", username);
+				session.setMaxInactiveInterval(30*60);
+				Cookie userName = new Cookie("username", username);
+				userName.setMaxAge(24*60*60);
+				response.addCookie(userName);
+				response.sendRedirect("Home");
 			} else {
-				view = request.getRequestDispatcher("login.jsp");
+				String errorMessage = "Invalid name";
+				request.setAttribute("error",errorMessage);
+				RequestDispatcher rd = request.getRequestDispatcher("Login");
+				rd.forward(request, response);
+//				response.sendRedirect("Login");
 			}
-			view.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

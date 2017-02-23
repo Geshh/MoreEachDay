@@ -79,3 +79,15 @@ body {
     overflow: hidden;
     outline:none;
 }
+
+.profile {
+	color: #3c3c3c;
+    text-shadow: 0 -2px 3px #111,0 3px 4px #666;
+    font-size: 94px;
+}
+
+#list2 {
+	color: #3c3c3c;
+    text-shadow: 0 -2px 3px #111,0 3px 4px #666;
+    font-size: 60px;
+}

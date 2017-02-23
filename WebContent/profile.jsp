@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/mainPage.css">
+<link rel="stylesheet" type="text/css" href="css/profilePage.css">
 <meta charset=utf-8>
 <title>More Each Day</title>
 </head>
@@ -18,7 +18,10 @@
 	<br> 
 	<a href="#">Travel</a> 
 	<br> 
-	<a href="#">Health</a> <br> <a href="#">Cooking</a> <br>
+	<a href="#">Health</a>
+	<br>
+	<a href="#">Cooking</a> 
+	<br>
 	<form action="Logout" method="post">
 		<input class="button" type="submit" value="Log Out">
 	</form>
@@ -42,11 +45,32 @@
 			}
 		}
 	%>
-	<div class="main-content">
-		<div class="message">
-			<h1>More Each Day</h1>
 
-		</div>
+	<div class="main-content">
+	
+	<div class="message">
+		<h1>More Each Day</h1>
 	</div>
+	<div class="profile">
+	<p>Profile of:</p>
+	<%=userName %>
+	</div>
+	
+	<%@ page import="com.service.TaskManager" %>
+	<%@ page import="com.model.CompletedTask" %>
+	<%@ page import="java.util.List" %>
+	<%@ page import="com.model.CompletedTask.CompletedTaskPK"%>
+	
+	<% List<CompletedTask> eList = TaskManager.userTasks(userName); %>
+	
+	<ul>
+	<% for(int i=0; i!=eList.size();i++) {%>
+		<li> <%=eList.get(i).getPk().getUserID() %> </li>
+	<% } %>
+	</ul>
+
+	</div>
+	
+	
 </body>
 </html>

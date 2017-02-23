@@ -42,6 +42,7 @@
 			}
 		}
 	%>
+	
 	<div class="main-content">
 		<div class="message">
 			<h1>More Each Day</h1>

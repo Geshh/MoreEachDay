@@ -12,7 +12,6 @@ import org.hibernate.query.Query;
 import com.hibernate.HibernateUtil;
 import com.model.CompletedTask;
 import com.model.CompletedTask.CompletedTaskPK;
-import com.model.Task;
 
 public class TaskManager {
 	

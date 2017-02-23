@@ -40,7 +40,7 @@ public class Main {
 		Thread.sleep(3000);
 		TaskManager.completeTask("Geshh", 4);
 		Thread.sleep(2000);
-		TaskManager.completeTask("Geshh", 2);
+		TaskManager.completeTask("lellel", 2);
 		
 		List<CompletedTask> feedTasks = TaskManager.followingUsersTasks("stunji");
 		for (CompletedTask completedTask : feedTasks) {

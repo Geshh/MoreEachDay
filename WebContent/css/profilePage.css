@@ -50,7 +50,7 @@ body {
     overflow-y: scroll;
     overflow-x: hidden;
     /*background-color: lightgrey;*/
-    background-image:url("bg5.jpeg");
+    background-image:url("../images/bg5.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

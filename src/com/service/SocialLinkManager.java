@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -24,7 +26,7 @@ public class SocialLinkManager {
 				int followerID = getUserId(followerUsername, session);
 				int followeeID = getUserId(followeeUsername, session);
 				SocialLink sl = new SocialLink();
-				SocialLinkPK slPK = sl.new SocialLinkPK(followerID, followeeID);
+				SocialLinkPK slPK = new SocialLinkPK(followerID, followeeID);
 				sl.setPk(slPK);
 				session.saveOrUpdate(sl);
 				t.commit();
@@ -50,7 +52,7 @@ public class SocialLinkManager {
 				int followeeID = getUserId(followeeUsername, session);
 				
 				SocialLink sl = new SocialLink();
-				SocialLinkPK slPK = sl.new SocialLinkPK(followerID, followeeID);
+				SocialLinkPK slPK = new SocialLinkPK(followerID, followeeID);
 				sl.setPk(slPK);
 				session.delete(sl);
 				t.commit();
@@ -63,8 +65,8 @@ public class SocialLinkManager {
 		}
 	}
 	
-/*	public static List<User> following(String followerUsername) {
-		List<User> followingIDs = null;
+	public static List<Integer> following(String followerUsername) {
+		List<Integer> followingIDs = null;
 		if (!UserManager.userExists(followerUsername)) {
 			return null;
 		} else {
@@ -74,7 +76,7 @@ public class SocialLinkManager {
 			try {
 				t = session.beginTransaction();
 				int followerID = getUserId(followerUsername, session);
-				followingIDs = session.createQuery("from SocialLink where follower_id='" + followerID + "'").list();
+				followingIDs = session.createQuery("select s.pk.followeeID from SocialLink s where s.pk.followerID='" + followerID + "'").list();
 				t.commit();
 			} catch (HibernateException e) {
 				e.printStackTrace();
@@ -83,8 +85,31 @@ public class SocialLinkManager {
 			}
 			return followingIDs;
 		}
-	}*/
+	}
 
+	public static List<Integer> followers(String followeeUsername) {
+		List<Integer> followingIDs = null;
+		if (!UserManager.userExists(followeeUsername)) {
+			return null;
+		} else {
+			Session session = HibernateUtil.openSession();
+			Transaction t = null;
+
+			try {
+				t = session.beginTransaction();
+				int followeeID = getUserId(followeeUsername, session);
+				followingIDs = session.createQuery("select s.pk.followerID from SocialLink s where s.pk.followeeID='" + followeeID + "'").list();
+				t.commit();
+			} catch (HibernateException e) {
+				e.printStackTrace();
+			} finally {
+				session.close();
+			}
+			return followingIDs;
+		}
+	}
+	
+	
 	private static int getUserId(String username, Session session) {
 		Query query = session.createQuery("from User where username='" + username + "'");
 		User u = (User) query.uniqueResult();

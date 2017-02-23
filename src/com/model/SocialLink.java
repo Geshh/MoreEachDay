@@ -17,7 +17,7 @@ public class SocialLink implements Serializable {
 	private static final long serialVersionUID = -1054352078130986642L;
 
 	@Embeddable
-	public class SocialLinkPK implements Serializable {
+	public static class SocialLinkPK implements Serializable {
 		private static final long serialVersionUID = 1L;
 		
 		public SocialLinkPK() {}
@@ -58,6 +58,10 @@ public class SocialLink implements Serializable {
 
 
 	public SocialLink() {}
+	
+	public SocialLink(SocialLinkPK pk) {
+		this.pk = pk;
+	}
 
 
 	public SocialLinkPK getPk() {

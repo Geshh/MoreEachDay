@@ -1,5 +1,7 @@
 package com.main;
 
+import java.util.List;
+
 import com.service.SocialLinkManager;
 
 public class Main {
@@ -9,11 +11,19 @@ public class Main {
 		SocialLinkManager.follow("stunji", "boris");
 		SocialLinkManager.follow("Geshh", "boris");
 		SocialLinkManager.follow("stunji", "Geshh");
-		SocialLinkManager.unfollow("stunji", "boris");
-/*		List<User> ls = SocialLinkManager.following("stunji");
-		for (User user : ls) {
-			System.out.println(user.getUsername());
-		}*/
+		SocialLinkManager.follow("Geshh", "stunji");
+/*		SocialLinkManager.unfollow("stunji", "boris");*/
+		List<Integer> followingIds = SocialLinkManager.following("stunji");
+		System.out.println("Following");
+		for (Object id : followingIds) {
+			System.out.println(id);
+		}
+		
+		List<Integer> followersIds = SocialLinkManager.followers("stunji");
+		System.out.println("Followers: ");
+		for (Object id : followersIds) {
+			System.out.println(id);
+		}
 	}
 
 }

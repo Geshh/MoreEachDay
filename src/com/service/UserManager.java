@@ -42,7 +42,7 @@ public class UserManager {
 	public static boolean addUser(String username, String email, String password) {
 
 		Session session = HibernateUtil.openSession();
-		if (userExists(username, email) || !validateEmail(email)) {
+		if (userExists(username) || !validateEmail(email)) {
 			return false;
 		}
 
@@ -68,7 +68,10 @@ public class UserManager {
 		return email.matches("\\S+@\\S+\\.\\S+") && email.length() >= 5;
 	}
 
-	private static boolean userExists(String username, String email) {
+	/*
+	 Removed email as argument and made protected.
+	 */
+	protected static boolean userExists(String username) {
 		Session session = HibernateUtil.openSession();
 		boolean result = false;
 

@@ -1,13 +1,21 @@
-<hibernate-configuration><session-factory><property name="hibernate.dialect">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">
 			org.hibernate.dialect.MySQLDialect
-		</property><property name="hibernate.connection.driver_class">
+		</property>
+		<property name="hibernate.connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property><!-- Assume test is the database name -->
-<property name="hibernate.connection.url">
+		<property name="hibernate.connection.url">
 			jdbc:mysql://localhost/more_each_day
-		</property><property name="hibernate.connection.username">
+		</property>
+		<property name="hibernate.connection.username">
 			hackbulgaria
-		</property><property name="hibernate.connection.password">
+		</property>
+		<property name="hibernate.connection.password">
 			hack-bulgaria-sql
 		</property><!-- List of XML mapping files -->
-<mapping class="com.model.User"/></session-factory></hibernate-configuration>
+		<mapping class="com.model.User" />
+		<mapping class="com.model.SocialLink"/>
+	</session-factory>
+</hibernate-configuration>

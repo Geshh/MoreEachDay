@@ -18,5 +18,6 @@
 		<mapping class="com.model.User" />
 		<mapping class="com.model.SocialLink"/>
 		<mapping class="com.model.CompletedTask"/>
+		<mapping class="com.model.Task"/>
 	</session-factory>
 </hibernate-configuration>

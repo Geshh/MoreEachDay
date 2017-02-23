@@ -46,8 +46,35 @@
 	<div class="main-content">
 		<div class="message">
 			<h1>More Each Day</h1>
-
 		</div>
+		
+	<%@ page import="com.service.TaskManager" %>
+	<%@ page import="com.model.CompletedTask" %>
+	<%@ page import="java.util.List" %>
+	<%@ page import="com.model.CompletedTask.CompletedTaskPK"%>
+	<%@ page import="com.service.UserManager" %>
+	
+	<% List<CompletedTask> eList = TaskManager.followingUsersTasks(userName); %>
+	
+	<div id="list2" class="listOftasks">
+	<ol>
+	<% if(eList!=null) { %>
+	<% for(int i=0; i!=eList.size();i++) {%>
+		<li><p><em>
+		<%=(String)UserManager.getUser(eList.get(i).getPk().getUserID()).getUsername() %> 
+		<%= (String)TaskManager.getTask(eList.get(i).getPk().getTaskID()).getDescription()%>
+		</em></p></li>
+	<% } }%>
+	</ol>
 	</div>
+		
+		
+		
+		
+	</div>
+	
+	
+	
+	
 </body>
 </html>

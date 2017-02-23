@@ -23,6 +23,10 @@ public class Home extends HttpServlet {
         if("Follow".equals(action)){
         }
         if("Unfollow".equals(action));
+        
+        RequestDispatcher view = request.getRequestDispatcher("main.jsp");
+        view.forward(request, response);
+        
 	}
 
 }

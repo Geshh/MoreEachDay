@@ -42,9 +42,9 @@ public class Main {
 		Thread.sleep(2000);
 		TaskManager.completeTask("lellel", 2);
 		
-		List<CompletedTask> feedTasks = TaskManager.followingUsersTasks("stunji");
+		List<CompletedTask> feedTasks = TaskManager.followingUsersTasks("pencho");
 		for (CompletedTask completedTask : feedTasks) {
-			System.out.println(UserManager.getUser(completedTask.getPk().getUserID()).getUsername() + " completed " + completedTask.getPk().getTaskID() + " on " + completedTask.getTimestamp());
+			System.out.println(TaskManager.getTask(completedTask.getPk().getTaskID()).getDescription());
 		}
 		
 		List<String> res = UserManager.getAlikeUsernames("mi");
@@ -53,10 +53,6 @@ public class Main {
 		}
 		
 		
-		List<CompletedTask> myTasks = TaskManager.userTasks("Geshh");
-		for (CompletedTask task : myTasks) {
-			System.out.println("Task " + task.getPk().getTaskID() + " on " + task.getTimestamp());
-		}
 	}
 
 }

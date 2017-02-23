@@ -20,7 +20,7 @@ public class TaskManager {
 		if (!UserManager.userExists(username)) {
 			return false;
 		} else {
-			Session session = new HibernateUtil().openSession();
+			Session session = HibernateUtil.openSession();
 			Transaction t = null;
 			
 			try {
@@ -46,7 +46,7 @@ public class TaskManager {
 			return null;
 		} else {
 			List<CompletedTask> feedTasks = new ArrayList<>();
-			Session session = new HibernateUtil().openSession();
+			Session session = HibernateUtil.openSession();
 			Transaction t = null;
 			
 			try {

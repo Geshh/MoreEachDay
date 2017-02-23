@@ -41,7 +41,7 @@ public class Main {
 		
 		List<CompletedTask> feedTasks = TaskManager.followingUsersTasks("stunji");
 		for (CompletedTask completedTask : feedTasks) {
-			System.out.println("User " + completedTask.getPk().getUserID() + " completed " + completedTask.getPk().getTaskID() + " on " + completedTask.getTimestamp());
+			System.out.println(UserManager.getUser(completedTask.getPk().getUserID()).getUsername() + " completed " + completedTask.getPk().getTaskID() + " on " + completedTask.getTimestamp());
 		}
 	}
 

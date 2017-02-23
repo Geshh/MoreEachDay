@@ -11,8 +11,6 @@ import com.model.User;
 public class UserManager {
 
 	public static boolean canLogin(String username, String password) {
-		
-		
 
 		Session session = HibernateUtil.openSession();
 		boolean result = false;
@@ -69,7 +67,7 @@ public class UserManager {
 	}
 
 	/*
-	 Removed email as argument and made protected.
+	 * Removed email as argument and made protected.
 	 */
 	protected static boolean userExists(String username) {
 		Session session = HibernateUtil.openSession();
@@ -92,5 +90,22 @@ public class UserManager {
 			session.close();
 		}
 		return result;
+	}
+
+	public static User getUser(int userID) {
+		Session session = HibernateUtil.openSession();
+		User user = new User();
+		Transaction t = null;
+
+		try {
+			t = session.beginTransaction();
+			user = (User) session.get(User.class, userID);
+			t.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return user;
 	}
 }

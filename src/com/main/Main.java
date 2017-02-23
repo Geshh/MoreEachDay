@@ -51,6 +51,12 @@ public class Main {
 		for (String string : res) {
 			System.out.println(string);
 		}
+		
+		
+		List<CompletedTask> myTasks = TaskManager.userTasks("Geshh");
+		for (CompletedTask task : myTasks) {
+			System.out.println("Task " + task.getPk().getTaskID() + " on " + task.getTimestamp());
+		}
 	}
 
 }

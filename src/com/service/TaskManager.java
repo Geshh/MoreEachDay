@@ -65,5 +65,28 @@ public class TaskManager {
 			
 		}
 	}
+	
+	public static List<CompletedTask> userTasks(String username) {
+		if (!UserManager.userExists(username)) {
+			return null;
+		} else {
+			List<CompletedTask> userTasks = new ArrayList<>();
+			Session session = HibernateUtil.openSession();
+			Transaction t = null;
+			
+			try {
+				t = session.beginTransaction();
+				int usernameID = SocialLinkManager.getUserId(username, session);
+				userTasks =  session.createQuery("from CompletedTask c where c.pk.userID = '" + usernameID + "' order by c.timestamp desc").list();
+				t.commit();
+			} catch (HibernateException e) {
+				e.printStackTrace();
+			} finally {
+				session.close();
+			}
+			return userTasks;
+			
+		}
+	}
 
 }

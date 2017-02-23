@@ -1,5 +1,8 @@
 package com.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -91,6 +94,27 @@ public class UserManager {
 		}
 		return result;
 	}
+	
+	public static List<String> getAlikeUsernames(String username) {
+		Session session = HibernateUtil.openSession();
+		List<String> usernames = new ArrayList<>();
+
+		Transaction t = null;
+		try {
+			t = session.beginTransaction();
+			usernames = (List<String>) session.createQuery("select username from User where username like '%" + username + "%'").list();
+			
+			t.commit();
+		} catch (HibernateException e) {
+			if (t != null) {
+				t.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return usernames;
+		
+	}
 
 	public static User getUser(int userID) {
 		Session session = HibernateUtil.openSession();
@@ -108,4 +132,6 @@ public class UserManager {
 		}
 		return user;
 	}
+	
+	
 }

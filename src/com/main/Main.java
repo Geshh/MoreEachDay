@@ -13,6 +13,9 @@ public class Main {
 		UserManager.addUser("stunji", "asdsa@abv.bg", "dassa");
 		UserManager.addUser("Geshh", "asdasa@abv.bg", "dassa");
 		UserManager.addUser("boris", "aaaasdsa@abv.bg", "dassa");
+		UserManager.addUser("dimitar", "aaaaaaaasdsa@abv.bg", "dassa");
+		UserManager.addUser("mitko", "kjdsfdsaaaasdsa@abv.bg", "dassa");
+		
 		
 		SocialLinkManager.follow("stunji", "boris");
 		SocialLinkManager.follow("Geshh", "boris");
@@ -42,6 +45,11 @@ public class Main {
 		List<CompletedTask> feedTasks = TaskManager.followingUsersTasks("stunji");
 		for (CompletedTask completedTask : feedTasks) {
 			System.out.println(UserManager.getUser(completedTask.getPk().getUserID()).getUsername() + " completed " + completedTask.getPk().getTaskID() + " on " + completedTask.getTimestamp());
+		}
+		
+		List<String> res = UserManager.getAlikeUsernames("mi");
+		for (String string : res) {
+			System.out.println(string);
 		}
 	}
 

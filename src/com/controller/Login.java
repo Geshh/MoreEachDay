@@ -27,7 +27,6 @@ public class Login extends HttpServlet {
 
 		try {
 			boolean loginResult = UserManager.canLogin(username, encryptedPassword);
-			RequestDispatcher view = null;
 			if (loginResult) {
 				HttpSession session = request.getSession();
 				session.setAttribute("username", username);

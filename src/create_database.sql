@@ -14,6 +14,7 @@ CREATE TABLE `tasks` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `category_id` INT NOT NULL,
     `level` INT,
+    `name` VARCHAR(1023) NOT NULL,
     `description` VARCHAR(1023) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

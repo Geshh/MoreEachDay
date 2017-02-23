@@ -1,6 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	<%
+		//allow access only if session exists
+		String user = null;
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("Login");
+		} else
+			user = (String) session.getAttribute("username");
+		String userName = null;
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("username"))
+					userName = cookie.getValue();
+			}
+		}
+	%>
+	<%@ page import="com.service.TaskManager" %>
+	<%@ page import="com.model.CompletedTask" %>
+	<%@ page import="java.util.List" %>
+	<%@ page import="com.model.CompletedTask.CompletedTaskPK"%>
+	<%@ page import="com.service.UserManager" %>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/mainPage.css">
@@ -59,11 +80,8 @@
     background-color: #5cb85c;
     color: white;
 }
-.modal-body {padding: 2px 16px;}
-.modal-footer {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
+.modal-body {
+	padding: 2px 16px;
 }
 </style>
 
@@ -72,7 +90,8 @@
 <header>
 <div class="sidenav">
 
-<button id="myBtn">Open Modal</button>
+<button id="myBtn" >Travel</button>
+<!-- show all tasks with id=2 (Travel) -->
 <!-- The Modal -->
 <div id="myModal" class="modal">
   <!-- Modal content -->
@@ -83,16 +102,17 @@
     </div>
     
     <div class="modal-body">
+    <!-- SHOW ALL TASKS -->
       <p>Some text in the Modal Body</p>
       <button id="myBtn">Complete</button>
     </div>
   </div>
-
 </div>
 
 	<a href="Home">Home</a> 
 	<br> 
-	<a href="Profile">Profile</a> <br>
+	<a href="Profile">Profile</a> 
+	<br>
 	<p>Categories:</p>
 	<a href="#">Fun</a> 
 	<br> 
@@ -120,25 +140,10 @@ window.onclick = function(event) {
     }
 }
 </script>
+
 </header>
 
 <body>
-	<%
-		//allow access only if session exists
-		String user = null;
-		if (session.getAttribute("username") == null) {
-			response.sendRedirect("Login");
-		} else
-			user = (String) session.getAttribute("username");
-		String userName = null;
-		Cookie[] cookies = request.getCookies();
-		if (cookies != null) {
-			for (Cookie cookie : cookies) {
-				if (cookie.getName().equals("username"))
-					userName = cookie.getValue();
-			}
-		}
-	%>
 	
 	<div class="main-content">
 		<div class="message">
@@ -146,12 +151,6 @@ window.onclick = function(event) {
 		</div>
 	
 	<div class="follows">
-		
-	<%@ page import="com.service.TaskManager" %>
-	<%@ page import="com.model.CompletedTask" %>
-	<%@ page import="java.util.List" %>
-	<%@ page import="com.model.CompletedTask.CompletedTaskPK"%>
-	<%@ page import="com.service.UserManager" %>
 	
 	<% List<CompletedTask> eList = TaskManager.followingUsersTasks(userName); %>
 	

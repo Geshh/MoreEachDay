@@ -84,7 +84,7 @@ VALUES
 (9,8),
 (10,2),
 (10,7),
-(10,9),
+(10,9);
 
 INSERT INTO categories
 (`name`)

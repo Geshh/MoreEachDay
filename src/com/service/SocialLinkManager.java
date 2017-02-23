@@ -1,8 +1,5 @@
 package com.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,8 +9,6 @@ import com.hibernate.HibernateUtil;
 import com.model.SocialLink;
 import com.model.SocialLink.SocialLinkPK;
 import com.model.User;
-
-import javassist.NotFoundException;
 
 public class SocialLinkManager {
 

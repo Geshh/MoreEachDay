@@ -1,8 +1,5 @@
 package com.main;
 
-import java.util.List;
-
-import com.model.User;
 import com.service.SocialLinkManager;
 
 public class Main {

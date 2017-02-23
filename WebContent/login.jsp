@@ -42,7 +42,7 @@
 						</form>
 						<br>
 						<div class="red-button-box">
-							<button onclick="window.location.href='/MoreEachDay/register.jsp'" class="red-button" id="show">Register</button>
+							<button onclick="window.location.href='/MoreEachDay/register.jsp'" class="red-button">Register</button>
 						</div>
 
 					</section>

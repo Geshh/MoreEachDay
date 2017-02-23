@@ -45,7 +45,11 @@
 							<br>
 							<br>
 							<div class="blue-button-box">
-								<button class="blue-button">Register</button>
+								<button type="submit" class="blue-button">Register</button>
+							</div>
+							<br>
+							<div class="red-button-box">
+								<button onclick="window.location.href='/MoreEachDay/login.jsp'" class="red-button">Log In</button>
 							</div>	
 						</form>
 <!-- 						<div class="red-button-box">

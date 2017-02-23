@@ -3,6 +3,7 @@ package com.main;
 import java.util.List;
 
 import com.service.SocialLinkManager;
+import com.service.TaskManager;
 import com.service.UserManager;
 
 public class Main {
@@ -28,6 +29,9 @@ public class Main {
 		for (Object id : followersIds) {
 			System.out.println(id);
 		}
+		
+		
+		TaskManager.completeTask("stunji", 1);
 	}
 
 }

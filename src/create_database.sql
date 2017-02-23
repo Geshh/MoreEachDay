@@ -26,7 +26,8 @@ CREATE TABLE `categories` (
 CREATE TABLE `completed_tasks` (
     `user_id` INT NOT NULL,
     `task_id` INT NOT NULL,
-    `timestamp` DATETIME DEFAULT CURRENT_TIMESTAMP
+    `timestamp` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`user_id`, `task_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `social_graph` (

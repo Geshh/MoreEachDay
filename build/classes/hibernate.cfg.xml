@@ -17,5 +17,6 @@
 		</property><!-- List of XML mapping files -->
 		<mapping class="com.model.User" />
 		<mapping class="com.model.SocialLink"/>
+		<mapping class="com.model.CompletedTask"/>
 	</session-factory>
 </hibernate-configuration>

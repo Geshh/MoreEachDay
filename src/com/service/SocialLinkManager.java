@@ -110,7 +110,7 @@ public class SocialLinkManager {
 	}
 	
 	
-	private static int getUserId(String username, Session session) {
+	protected static int getUserId(String username, Session session) {
 		Query query = session.createQuery("from User where username='" + username + "'");
 		User u = (User) query.uniqueResult();
 		return u.getId();

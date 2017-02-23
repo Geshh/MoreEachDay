@@ -52,8 +52,8 @@
 		<h1>More Each Day</h1>
 	</div>
 	<div class="profile">
-	<p>Profile of: <%=userName %> </p>
-	</div>
+	<p>Hello <%=userName %>, </p>
+	<p>Your Completed Tasks: </p>
 	
 	<%@ page import="com.service.TaskManager" %>
 	<%@ page import="com.model.CompletedTask" %>
@@ -62,14 +62,15 @@
 	
 	<% List<CompletedTask> eList = TaskManager.userTasks(userName); %>
 	
-	<div id="list2" class="listOftasks">
-	<ol>
+	<div class="list">
 	<% for(int i=0; i!=eList.size();i++) {%>
-		<li><p><em><%=eList.get(i).getPk().getUserID() %> </em></p></li>
+		<p><em><%=(String) TaskManager.getTask(eList.get(i).getPk().getTaskID()).getDescription() %></em></p>
+		<h2><%= eList.get(i).getTimestamp() %></h2>
 	<% } %>
-	</ol>
 	</div>
-
+	
+	</div>
+	
 	</div>
 	
 </body>

@@ -41,6 +41,10 @@ public class Main {
 		TaskManager.completeTask("Geshh", 4);
 		Thread.sleep(2000);
 		TaskManager.completeTask("lellel", 2);
+		Thread.sleep(2000);
+		TaskManager.completeTask("pencho", 1);
+		Thread.sleep(2000);
+		TaskManager.completeTask("pencho", 2);
 		
 		List<CompletedTask> feedTasks = TaskManager.followingUsersTasks("pencho");
 		for (CompletedTask completedTask : feedTasks) {

@@ -47,6 +47,8 @@
 		<div class="message">
 			<h1>More Each Day</h1>
 		</div>
+	
+	<div class="follows">
 		
 	<%@ page import="com.service.TaskManager" %>
 	<%@ page import="com.model.CompletedTask" %>
@@ -56,21 +58,18 @@
 	
 	<% List<CompletedTask> eList = TaskManager.followingUsersTasks(userName); %>
 	
-	<div id="list2" class="listOftasks">
-	<ol>
+	<div class="list">
 	<% if(eList!=null) { %>
 	<% for(int i=0; i!=eList.size();i++) {%>
-		<li><p><em>
+		<p><em>
 		<%=(String)UserManager.getUser(eList.get(i).getPk().getUserID()).getUsername() %> 
-		<%= (String)TaskManager.getTask(eList.get(i).getPk().getTaskID()).getDescription()%>
-		</em></p></li>
+		</em></p>
+		<h2>
+		<%= (String) TaskManager.getTask(eList.get(i).getPk().getTaskID()).getDescription() %>
+		</h2>
 	<% } }%>
-	</ol>
 	</div>
-		
-		
-		
-		
+	</div>
 	</div>
 	
 	

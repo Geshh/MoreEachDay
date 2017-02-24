@@ -95,6 +95,26 @@ public class TaskManager {
 
 		}
 	}
+	
+	public static List<Task> getCategoryTasks(String username, int categoryID) {
+		List<Task> categoryTasks = new ArrayList<>();
+		Session session = HibernateUtil.openSession();
+		Transaction t = null;
+		
+		try {
+			t = session.beginTransaction();
+			int usernameID = SocialLinkManager.getUserId(username, session);
+			categoryTasks = (List<Task>) session.createQuery(
+					"from Task tk where tk.categoryID = " 
+					+ categoryID + " and tk.id not in (select pk.taskID from CompletedTask where pk.userID = "
+					+ usernameID + ")").list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return categoryTasks;
+	}
 
 	public static Task getTask(int taskID) {
 		Session session = HibernateUtil.openSession();

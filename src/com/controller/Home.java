@@ -9,24 +9,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.service.TaskManager;
+
 @WebServlet("/Home")
 public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		RequestDispatcher view = request.getRequestDispatcher("main.jsp");
 		view.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
-        if("Follow".equals(action)){
-        }
-        if("Unfollow".equals(action));
-        
-        RequestDispatcher view = request.getRequestDispatcher("main.jsp");
-        view.forward(request, response);
-        
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Integer taskid = Integer.parseInt(request.getParameter("taskid"));
+		String username = request.getParameter("username");
+		TaskManager.completeTask(username, taskid);
+
+		RequestDispatcher view = request.getRequestDispatcher("main.jsp");
+		view.forward(request, response);
+
 	}
 
 }

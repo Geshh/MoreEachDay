@@ -22,6 +22,7 @@
 	<%@ page import="java.util.List" %>
 	<%@ page import="com.model.CompletedTask.CompletedTaskPK"%>
 	<%@ page import="com.service.UserManager" %>
+	<%@ page import = "com.model.Task" %>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/mainPage.css">
@@ -91,7 +92,6 @@
 <div class="sidenav">
 
 <button id="myBtn" >Travel</button>
-<!-- show all tasks with id=2 (Travel) -->
 <!-- The Modal -->
 <div id="myModal" class="modal">
   <!-- Modal content -->
@@ -103,8 +103,18 @@
     
     <div class="modal-body">
     <!-- SHOW ALL TASKS -->
-      <p>Some text in the Modal Body</p>
-      <button id="myBtn">Complete</button>
+    	<% List<Task> tasks = TaskManager.getCategoryTasks(userName, 2);%>
+    	
+    	<form action="Home" method="POST">
+    	<% for(int i=0;i!=tasks.size();i++) { %>
+      		<p><%=tasks.get(i).getDescription() %></p>
+      		<% int id=tasks.get(i).getId(); %>
+      		<input type="hidden" name="username" value="<%=userName%>"/>
+      		<input type="hidden" name="taskid" value="<%=id %>" />
+      		<input value="Submit" type="submit">
+      		
+      		<% } %>
+	     </form>
     </div>
   </div>
 </div>
@@ -128,6 +138,7 @@
 var modal = document.getElementById('myModal');
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
+
 btn.onclick = function() {
     modal.style.display = "block";
 }
@@ -144,7 +155,6 @@ window.onclick = function(event) {
 </header>
 
 <body>
-	
 	<div class="main-content">
 		<div class="message">
 			<h1>More Each Day</h1>

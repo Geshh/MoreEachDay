@@ -45,7 +45,7 @@
 }
 .modal-content {
     position: relative;
-    background-color: #fefefe;
+    background-color: rgba(136,136,136,0.9);
     margin: auto;
     padding-bottom: 20px;
     border: 1px solid #888;

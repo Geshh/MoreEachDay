@@ -39,9 +39,8 @@ public class Login extends HttpServlet {
 			} else {
 				String errorMessage = "Invalid name";
 				request.setAttribute("error",errorMessage);
-				RequestDispatcher rd = request.getRequestDispatcher("Login");
+				RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
 				rd.forward(request, response);
-//				response.sendRedirect("Login");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

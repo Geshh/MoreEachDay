@@ -12,7 +12,7 @@
 }
 
 .main-content {
-    width: 800px;
+    width: 60%;
     margin: 50px auto;
 }
 
@@ -71,11 +71,11 @@ body {
     color: #3c3c3c;
     text-shadow: 0 -2px 3px #111,0 3px 4px #666;
     font-size: 94px;
+    text-align: center;
 }
 
 .button {
     position: absolute;
-    bottom: 20%;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 28px;
@@ -86,6 +86,7 @@ body {
     cursor:pointer;
     overflow: hidden;
     outline:none;
+    margin-top: 300px;
 }
 
 .follows {
@@ -97,11 +98,27 @@ body {
     font-size: 60px;
 }
 
-h2 {
-	font-size:35px;
-	color:snow;
-}
-
 .list p {
 	color:snow;
 }
+
+.smallDate {
+	font-size: 20pt;
+	float: right;
+	margin-top: 40px;
+}
+
+.greeting {
+	float: right;
+	border: 0px solid black;
+	border-bottom-left-radius: 20px;
+	font-size: 40pt;
+	top: 0;
+	margin-top: -63px;
+	color: snow;
+	padding-right: 20px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	background-color: rgba(1,1,1,0.5);
+}
+

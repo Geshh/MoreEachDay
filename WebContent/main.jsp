@@ -47,7 +47,7 @@
     position: relative;
     background-color: #fefefe;
     margin: auto;
-    padding: 0;
+    padding-bottom: 20px;
     border: 1px solid #888;
     width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -120,6 +120,8 @@
 .modal-body {
 	padding: 2px 16px;
 }
+
+
 </style>
 
 </head>
@@ -307,6 +309,7 @@ window.onclick = function(event) {
 </header>
 
 <body>
+		<span class="greeting">Hello, <%=userName %>!</span>
 	<div class="main-content">
 		<div class="message">
 			<h1>More Each Day</h1>
@@ -321,10 +324,12 @@ window.onclick = function(event) {
 	<% for(int i=0; i!=eList.size();i++) {%>
 		<p><em>
 		<%=(String)UserManager.getUser(eList.get(i).getPk().getUserID()).getUsername() %> 
-		</em></p>
-		<h2>
-		<%= (String) TaskManager.getTask(eList.get(i).getPk().getTaskID()).getDescription() %>
-		</h2>
+		</em>
+		<span class="smallDate">
+		<%= eList.get(i).getTimestamp() %>
+		</span>
+		</br>
+		<%= (String) TaskManager.getTask(eList.get(i).getPk().getTaskID()).getDescription() %></p>
 	<% } }%>
 	</div>
 	</div>

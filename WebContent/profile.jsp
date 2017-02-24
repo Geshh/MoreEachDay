@@ -310,13 +310,13 @@ window.onclick = function(event) {
 
 <body>
 
+		<span class="greeting">Hello, <%=userName %>!</span>
 	<div class="main-content">
 	
 	<div class="message">
 		<h1>More Each Day</h1>
 	</div>
 	<div class="profile">
-	<p>Hello <%=userName %>, </p>
 	<p>Your Completed Tasks: </p>
 	
 	<%@ page import="com.service.TaskManager" %>
@@ -328,8 +328,10 @@ window.onclick = function(event) {
 	
 	<div class="list">
 	<% for(int i=0; i!=eList.size();i++) {%>
-		<p><em><%=(String) TaskManager.getTask(eList.get(i).getPk().getTaskID()).getDescription() %></em></p>
-		<h2><%= eList.get(i).getTimestamp() %></h2>
+		<p><span class="smallDate">
+		<%= eList.get(i).getTimestamp() %>
+		</span>
+		<%= (String) TaskManager.getTask(eList.get(i).getPk().getTaskID()).getDescription() %></p>
 	<% } %>
 	</div>
 	

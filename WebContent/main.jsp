@@ -64,21 +64,57 @@
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }
-.close {
+.closeCooking {
     color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-.close:hover,
-.close:focus {
+.closeCooking:hover,
+.closeCooking:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.closeHealth {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.closeHealth:hover,
+.closeHealth:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.closeTravel {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.closeTravel:hover,
+.closeTravel:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.closeFun {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.closeFun:hover,
+.closeFun:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: rgb(92, 184, 92);
     color: white;
 }
 .modal-body {
@@ -91,18 +127,17 @@
 <header>
 
 <div class="sidenav">
-
 	<a href="Home">Home</a> 
 	<br> 
 	<a href="Profile">Profile</a> 
 	<br>
 	<p>Categories:</p>
 		
-<button id="myBtn" >Travel</button>
-<div id="myModal" class="modal">
+<button id="myBtnTravel" >Travel</button>
+<div id="myModalTravel" class="modal">
   <div class="modal-content">
     <div class="modal-header">
-      <span class="close">&times;</span>
+      <span class="closeTravel">&times;</span>
       <h2>Travel Tasks</h2>
     </div>
     <div class="modal-body">
@@ -113,27 +148,148 @@
       		<% int id=traveltasks.get(i).getId(); %>
       		<input type="hidden" name="username" value="<%=userName%>"/>
       		<input type="hidden" name="taskid" value="<%=id %>" />
-      		<input value="Submit" type="submit">
+      		<input value="Complete" type="submit">
       		<% } %>
 	     </form>
     </div>
   </div>
 </div>	
-	
-	<a href="#">Fun</a> 
-	<br> 
-	<a href="#">Travel</a> 
-	<br> 
-	<a href="#">Health</a> <br> <a href="#">Cooking</a> <br>
+
+<br>
+
+<button id="myBtnFun" >Fun</button>
+<div id="myModalFun" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="closeFun">&times;</span>
+      <h2>Fun Tasks</h2>
+    </div>
+    <div class="modal-body">
+    	<% List<Task> funtasks = TaskManager.getCategoryTasks(userName, 1);%>
+    	<form action="Home" method="POST">
+    	<% for(int i=0;i!=funtasks.size();i++) { %>
+      		<p><%=funtasks.get(i).getDescription() %></p>
+      		<% int id=funtasks.get(i).getId(); %>
+      		<input type="hidden" name="username" value="<%=userName%>"/>
+      		<input type="hidden" name="taskid" value="<%=id %>" />
+      		<input value="Complete" type="submit">
+      		<% } %>
+	     </form>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<button id="myBtnHealth" >Health</button>
+<div id="myModalHealth" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="closeHealth">&times;</span>
+      <h2>Health Tasks</h2>
+    </div>
+    <div class="modal-body">
+    	<% List<Task> healthtasks = TaskManager.getCategoryTasks(userName, 3);%>
+    	<form action="Home" method="POST">
+    	<% for(int i=0;i!=healthtasks.size();i++) { %>
+      		<p><%=healthtasks.get(i).getDescription() %></p>
+      		<% int id=healthtasks.get(i).getId(); %>
+      		<input type="hidden" name="username" value="<%=userName%>"/>
+      		<input type="hidden" name="taskid" value="<%=id %>" />
+      		<input value="Complete" type="submit">
+      		<% } %>
+	     </form>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<button id="myBtnCooking" >Cooking</button>
+<div id="myModalCooking" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="closeCooking">&times;</span>
+      <h2>Cooking Tasks</h2>
+    </div>
+    <div class="modal-body">
+    	<% List<Task> cookingtasks = TaskManager.getCategoryTasks(userName, 4);%>
+    	<form action="Home" method="POST">
+    	<% for(int i=0;i!=cookingtasks.size();i++) { %>
+      		<p><%=cookingtasks.get(i).getDescription() %></p>
+      		<% int id=cookingtasks.get(i).getId(); %>
+      		<input type="hidden" name="username" value="<%=userName%>"/>
+      		<input type="hidden" name="taskid" value="<%=id %>" />
+      		<input value="Complete" type="submit">
+      		<% } %>
+	     </form>
+    </div>
+  </div>
+</div>
+
 	<form action="Logout" method="post">
 		<input class="button" type="submit" value="Log Out">
 	</form>
 </div>
 
 <script>
-var modal = document.getElementById('myModal');
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
+var modalCooking = document.getElementById('myModalCooking');
+var btnCooking = document.getElementById("myBtnCooking");
+var spanCooking = document.getElementsByClassName("closeCooking")[0];
+
+btnCooking.onclick = function() {
+	modalCooking.style.display="block";
+}
+spanCooking.onclick = function() {
+	modalCooking.style.display="none";
+}
+window.onclick = function(event) {
+	if(event.target == modalCooking) {
+		modalCooking.style.display="none";
+	}
+}
+</script>
+
+<script>
+var modalHealth = document.getElementById('myModalHealth');
+var btnHealth = document.getElementById("myBtnHealth");
+var spanHealth = document.getElementsByClassName("closeHealth")[0];
+
+btnHealth.onclick = function() {
+	modalHealth.style.display="block";
+}
+spanHealth.onclick = function() {
+	modalHealth.style.display="none";
+}
+window.onclick = function(event) {
+	if(event.target == modalHealth) {
+		modalHealth.style.display="none";
+	}
+}
+</script>
+
+<script>
+var modalFun = document.getElementById('myModalFun');
+var btnFun = document.getElementById("myBtnFun");
+var spanFun = document.getElementsByClassName("closeFun")[0];
+
+btnFun.onclick = function() {
+	modalFun.style.display="block";
+}
+spanFun.onclick = function() {
+	modalFun.style.display="none";
+}
+window.onclick = function(event) {
+	if(event.target == modalFun) {
+		modalFun.style.display="none";
+	}
+}
+</script>
+
+<script>
+var modal = document.getElementById('myModalTravel');
+var btn = document.getElementById("myBtnTravel");
+var span = document.getElementsByClassName("closeTravel")[0];
 
 btn.onclick = function() {
     modal.style.display = "block";

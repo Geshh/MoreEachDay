@@ -89,41 +89,37 @@
 </head>
 
 <header>
-<div class="sidenav">
 
-<button id="myBtn" >Travel</button>
-<!-- The Modal -->
-<div id="myModal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>Travel Tasks</h2>
-    </div>
-    
-    <div class="modal-body">
-    <!-- SHOW ALL TASKS -->
-    	<% List<Task> tasks = TaskManager.getCategoryTasks(userName, 2);%>
-    	
-    	<form action="Home" method="POST">
-    	<% for(int i=0;i!=tasks.size();i++) { %>
-      		<p><%=tasks.get(i).getDescription() %></p>
-      		<% int id=tasks.get(i).getId(); %>
-      		<input type="hidden" name="username" value="<%=userName%>"/>
-      		<input type="hidden" name="taskid" value="<%=id %>" />
-      		<input value="Submit" type="submit">
-      		
-      		<% } %>
-	     </form>
-    </div>
-  </div>
-</div>
+<div class="sidenav">
 
 	<a href="Home">Home</a> 
 	<br> 
 	<a href="Profile">Profile</a> 
 	<br>
 	<p>Categories:</p>
+		
+<button id="myBtn" >Travel</button>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Travel Tasks</h2>
+    </div>
+    <div class="modal-body">
+    	<% List<Task> traveltasks = TaskManager.getCategoryTasks(userName, 2);%>
+    	<form action="Home" method="POST">
+    	<% for(int i=0;i!=traveltasks.size();i++) { %>
+      		<p><%=traveltasks.get(i).getDescription() %></p>
+      		<% int id=traveltasks.get(i).getId(); %>
+      		<input type="hidden" name="username" value="<%=userName%>"/>
+      		<input type="hidden" name="taskid" value="<%=id %>" />
+      		<input value="Submit" type="submit">
+      		<% } %>
+	     </form>
+    </div>
+  </div>
+</div>	
+	
 	<a href="#">Fun</a> 
 	<br> 
 	<a href="#">Travel</a> 
